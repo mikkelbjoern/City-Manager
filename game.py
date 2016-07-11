@@ -1,11 +1,13 @@
 """ buildingNames contains the names of the buildingtiers in order,
 buildingPrices contains the current prices,
 buildigIncome contains the current income per day,
-buildingOwned contains the amount currently owned"""
+buildingOwned contains the amount currently owned,
+buildingPopulation contains the amount of citizens a building holds"""
 
 buildingNames = ["House", "Manor","Castle", "City Hall","Spaceship"]
 buildingPrices = [10, 50, 100, 1000, 956000]
 buildingIncome = [1, 10, 25, 275, 4200]
+buildingPopulation = [4,4,10,0,0]
 buildingOwned = [0,0,0,0,0]
 
 day = 0 #The current day
@@ -14,7 +16,7 @@ wealth = 10 #The players wealth
 def statusMessage():#Sends a status message to the player.
     global cityName
     global wealth
-    print("The city has a total wealth of: " + str(wealth))
+    print("The city has a total wealth of: " + str(wealth) + " and a total population of " + str(population()))
     print(cityName + " has a total income of " + str(income()) +  " and currently consists of:")
     for i in range(len(buildingNames)):
         print("  -     " + buildingNames[i] + ": " + str(buildingOwned[i]))
@@ -23,6 +25,12 @@ def income():#Calculates the current income. Returns the income.
     n = 0
     for i in range(len(buildingOwned)):
         n = n + buildingOwned[i] * buildingIncome[i]
+    return n
+
+def population():#Calculates the current population. Returns the population.
+    n = 0
+    for i in range(len(buildingOwned)):
+        n = n + buildingOwned[i] * buildingPopulation[i]
     return n
 
 def sureCheck():#Asks if the player is sure about a choice. Returns a bool.
