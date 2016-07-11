@@ -4,11 +4,11 @@ buildigIncome contains the current income per day,
 buildingOwned contains the amount currently owned,
 buildingPopulation contains the amount of citizens a building holds"""
 
-buildingNames = ["House", "Manor","Castle", "City Hall","Spaceship"]
-buildingPrices = [10, 50, 100, 1000, 956000]
-buildingIncome = [1, 10, 25, 275, 4200]
-buildingPopulation = [4,4,10,0,0]
-buildingOwned = [0,0,0,0,0]
+buildingNames = ["Tent","House","Manor","Factory"]
+buildingPrices = [5,10,50,200]
+buildingIncome = [0,1,10,50]
+buildingPopulation = [1,4,4,0]
+buildingOwned = [1,0,0,0]
 
 day = 0 #The current day
 wealth = 10 #The players wealth
