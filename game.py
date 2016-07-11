@@ -45,7 +45,7 @@ def buyMenu():#The menu for buying new buildings
     global wealth
     print("These buildings can be bought at these prices:")
     for i in range(len(buildingNames)):
-        print("  - " + buildingNames[i] + ", price: " + str(buildingPrices[i]) + " - income per day: " + str(buildingIncome[i]))
+        print("  - " + buildingNames[i] + ", price: " + str(buildingPrices[i]) + " - income per day: " + str(buildingIncome[i]) + " and creates housing for " + str(buildingPopulation[i]) + " people")
     decision = input("Which building do you want to buy? ")
 
     if decision in buildingNames:
@@ -58,7 +58,7 @@ def buyMenu():#The menu for buying new buildings
                 buildingOwned.pop(decisionNum)
                 buildingOwned.insert(decisionNum, prevOwned+1)
                 print("You have succesfuly bought a " + str(buildingNames[decisionNum]))
-                print("Your new wealth is: " + str(wealth))
+                print("Your new wealth is: " + str(wealth) + " and your total population is " + str(population()))
         else:
             print("You don't have enough money for that. \n")
 
