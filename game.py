@@ -61,6 +61,12 @@ def buyMenu():#The menu for buying new buildings
                 print("Your new wealth is: " + str(wealth) + " and your total population is " + str(population()))
         else:
             print("You don't have enough money for that. \n")
+    elif decision == "back":
+        print("\n")
+    else:
+        print("That building couldn't be found in the list of buildings. Remember that upper and lower case matters.")
+        print("To go back from the buy menu, write \"back\".")
+        buyMenu()
 
 def buyMoreMenu():
     global wealth
@@ -89,7 +95,12 @@ def buyMoreMenu():
         except ValueError:
             print("That is not a valid number.")
             buyMoreMenu()
-
+    elif decision == "back":
+        print("\n")
+    else:
+        print("That building couldn't be found in the list of buildings. Remember that upper and lower case matters.")
+        print("To go back from the buy menu, write \"back\".")
+        buyMoreMenu()
 
 
 def help():#The help menu
