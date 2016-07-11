@@ -11,7 +11,7 @@ buildingPopulation = [1,4,4,0]
 buildingOwned = [1,0,0,0]
 
 day = 0 #The current day
-wealth = 10 #The players wealth
+wealth = 100 #The players wealth
 
 def statusMessage():#Sends a status message to the player.
     global cityName
@@ -62,17 +62,40 @@ def buyMenu():#The menu for buying new buildings
         else:
             print("You don't have enough money for that. \n")
 
+def buyMoreMenu():
+    global wealth
+    print("These buildings can be bought at these prices:")
+    for i in range(len(buildingNames)):
+        print("  - " + buildingNames[i] + ", price: " + str(buildingPrices[i]) + " - income per day: " + str(buildingIncome[i]) + " and creates housing for " + str(buildingPopulation[i]) + " people")
+    decision = input("Which building do you want to buy? ")
 
-    elif decision == "back":
-        print("\n")
-    else:
-        print("That building couldn't be found in the list of buildings. Remember that upper and lower case matters.")
-        print("To go back from the buy menu, write \"back\".")
-        buyMenu()
+    if decision in buildingNames:
+        decisionNum = buildingNames.index(decision)
+        try:
+            amount = int(input("How many do you want to buy? "))
+            if type(amount) is int:
+                cost = amount * buildingPrices[decisionNum]
+                if cost <= wealth:
+                    print("You have " + str(wealth) + " in the bank. After this purchase you will have " + str(wealth - cost))
+                    if sureCheck():
+                        wealth-=cost
+                        prevOwned = buildingOwned[decisionNum]
+                        buildingOwned.pop(decisionNum)
+                        buildingOwned.insert(decisionNum, prevOwned+amount)
+                        print("You have succesfuly bought " + str(amount) + " " + str(buildingNames[decisionNum]))
+                        print("Your new wealth is: " + str(wealth) + " and your total population is " + str(population()))
+                else:
+                    print("You don't have enough money for that. \n")
+        except ValueError:
+            print("That is not a valid number.")
+            buyMoreMenu()
+
+
 
 def help():#The help menu
     print("These are the commands you can use:")
     print("* buy - used for buying new buildings")
+    print("* buy more - used for buying more than one of the same type of building")
     print("* status - shows the current status of the city")
     print("* end day - ends the days and starts a new one")
     print("* rename city - lets you rename the city")
@@ -86,6 +109,8 @@ def choices():#The main list of choices that the player has.
         newDay()
     elif choice == "buy":
         buyMenu()
+    elif choice == "buy more":
+        buyMoreMenu()
     elif choice == "rename city":
         cityName = input("What should the new name of the city be? ")
     elif choice == "help":
