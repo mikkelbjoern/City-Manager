@@ -4,14 +4,14 @@ buildigIncome contains the current income per day,
 buildingOwned contains the amount currently owned,
 buildingPopulation contains the amount of citizens a building holds"""
 
-buildingNames = ["Tent","House","Manor","Factory"]
-buildingPrices = [5,10,50,200]
-buildingIncome = [0,1,10,50]
-buildingPopulation = [1,4,4,0]
-buildingOwned = [1,0,0,0]
+buildingNames = ["Tent","House","Manor","Factory", "Apartments"]
+buildingPrices = [5,10,50,200,2000]
+buildingIncome = [1,1,6,30,100]
+buildingPopulation = [1,4,4,0,500]
+buildingOwned = [1,0,0,0,0]
 
 day = 0 #The current day
-wealth = 100 #The players wealth
+wealth = 0 #The players wealth
 
 def statusMessage():#Sends a status message to the player.
     global cityName
