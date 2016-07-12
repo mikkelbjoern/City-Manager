@@ -5,8 +5,8 @@ buildingOwned contains the amount currently owned,
 buildingPopulation contains the amount of citizens a building holds"""
 
 buildingNames = ["Tent","House","Manor","Factory", "Apartments"]
-buildingPrices = [5,10,50,200,2000]
-buildingIncome = [1,1,6,30,100]
+buildingPrices = [5,12,50,200,2000]
+buildingIncome = [1,2,6,30,100]
 buildingPopulation = [1,4,4,0,500]
 buildingOwned = [1,0,0,0,0]
 
@@ -116,7 +116,7 @@ def choices():#The main list of choices that the player has.
     choice = input(" - ")
     if choice == "status" or choice == "see status":
         statusMessage()
-    elif choice == "end day" or choice == "go to bed":
+    elif choice == "end day" or choice == "go to bed" or choice=="sleep":
         newDay()
     elif choice == "buy":
         buyMenu()
