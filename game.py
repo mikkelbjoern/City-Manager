@@ -1,3 +1,4 @@
+import math
 """ buildingNames contains the names of the buildingtiers in order,
 buildingPrices contains the current prices,
 buildigIncome contains the current income per day,
@@ -5,13 +6,14 @@ buildingOwned contains the amount currently owned,
 buildingPopulation contains the amount of citizens a building holds"""
 
 buildingNames = ["Tent","House","Manor","Factory", "Apartments"]
-buildingPrices = [5,12,50,200,2000]
+buildingPrices = [5,10,50,200,2000]
 buildingIncome = [1,2,6,30,100]
 buildingPopulation = [1,4,4,0,500]
 buildingOwned = [1,0,0,0,0]
 
 day = 0 #The current day
-wealth = 0 #The players wealth
+wealth = 100 #The players wealth
+inflation = 0.005
 
 def statusMessage():#Sends a status message to the player.
     global cityName
@@ -26,6 +28,10 @@ def income():#Calculates the current income. Returns the income.
     for i in range(len(buildingOwned)):
         n = n + buildingOwned[i] * buildingIncome[i]
     return n
+
+def priceIncrease():
+    for i in range(len(buildingPrices)):
+        buildingPrices[i]= math.floor(buildingPrices[i]*(1+inflation))
 
 def population():#Calculates the current population. Returns the population.
     n = 0
@@ -135,6 +141,7 @@ def newDay():#Starts a new day.
     wealth += income()
     day = day + 1
     print("\nThis is day " + str(day))
+    priceIncrease()
     statusMessage()
 
 
